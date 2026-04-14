@@ -4,7 +4,7 @@ PostgreSQL scheduled backup to S3-compatible storage. Designed to run as a [Kama
 
 ## How it works
 
-A lightweight container based on `postgres:15` that runs `pg_dump` on a cron-like schedule, uploads compressed backups to S3, and cleans up files older than the retention window. Optionally pings a heartbeat URL after each successful backup.
+A lightweight container based on `postgres:18` that runs `pg_dump` on a cron-like schedule, uploads compressed backups to S3, and cleans up files older than the retention window. Optionally pings a heartbeat URL after each successful backup.
 
 ## Usage
 
