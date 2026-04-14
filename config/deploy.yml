@@ -1,0 +1,22 @@
+# Kamal deploy.yml — only the db-backup accessory section shown.
+# Secrets come from .kamal/secrets (loaded automatically by Kamal).
+
+accessories:
+  db-backup:
+    image: myorg/pg-backup
+    host: 10.0.0.1  # your server IP
+    env:
+      clear:
+        POSTGRES_PORT: 5432
+        PGDATABASE: myapp_production
+        BUCKET: my-bucket/backups
+        HOST_BASE: s3.eu-central-1.amazonaws.com  # or your S3-compatible endpoint
+        SCHEDULE: "0 9 12 16"
+        RETENTION_DAYS: 7
+        HEARTBEAT_URL: "https://myapp.example.com/healthcheck/backup"
+      secret:
+        - ACCESS_KEY_ID
+        - SECRET_ACCESS_KEY
+        - POSTGRES_USER
+        - POSTGRES_PASS
+        - POSTGRES_HOST
